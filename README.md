@@ -26,7 +26,9 @@ y=[0,1,4,9,16,25]
 plt.plot(x,y)
 plt.show()
 ```
+
 <img width="836" height="582" alt="323063912-714c39f4-c504-451e-ba95-54704ab98ca1" src="https://github.com/user-attachments/assets/cdad03ba-8a2e-4cc0-a582-add9cad934ad" />
+
 ```
 import matplotlib.pyplot as plt
 x1 = [1,2,3]
@@ -46,7 +48,10 @@ plt.legend()
 plt.show()
 ```
 <img width="713" height="575" alt="560423380-bfb780f5-4399-4063-8bde-471f7a8b286e" src="https://github.com/user-attachments/assets/9c62195a-20b9-47a1-8fa6-510c91132d77" />
+
+
 ```
+
 import matplotlib.pyplot as plt
 
 x = [1,2,3,4,5,6]
