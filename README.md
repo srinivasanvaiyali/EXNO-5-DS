@@ -123,7 +123,6 @@ val=[5,6,3,7,2]
 n=["A", "B", "C", "D", "E"]
 plt.bar(n,val,color="green")
 plt.show()
-
 <img width="701" height="516" alt="324333423-c0033a63-164f-4cc4-996f-95201893ecd0" src="https://github.com/user-attachments/assets/f81e11bc-b915-4f9d-be5d-77da2480a872" />
 ```
 import matplotlib.pyplot as plt 
