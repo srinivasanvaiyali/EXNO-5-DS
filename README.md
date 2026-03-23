@@ -18,134 +18,119 @@ STEP 4:Apply the various data visualization tools wherever necessary.
 STEP 5:Include Necessary parameters in each functions.
 
 # Coding and Output:
-# Line Graph
 ```
-import matplotlib.pyplot as plt
-x= [0,1,2,3,4,5]
-y=[0,1,4,9,16,25]
-plt.plot(x,y)
-plt.show()
-```
-
-<img width="836" height="582" alt="323063912-714c39f4-c504-451e-ba95-54704ab98ca1" src="https://github.com/user-attachments/assets/cdad03ba-8a2e-4cc0-a582-add9cad934ad" />
-
-```
-import matplotlib.pyplot as plt
-x1 = [1,2,3]
-y1 = [2,4,1]
-plt.plot(x1, y1, label="line 1")
-
-x2 = [1,2,3]
-y2 = [4,1,3]
-plt.plot(x2, y2, label="line 2")
-
-plt.xlabel('x - axis')
-plt.ylabel('y - axis')
-
-plt.title('Two lines on same graph!')
-
-plt.legend()
-plt.show()
-```
-<img width="713" height="575" alt="560423380-bfb780f5-4399-4063-8bde-471f7a8b286e" src="https://github.com/user-attachments/assets/9c62195a-20b9-47a1-8fa6-510c91132d77" />
-
-
-```
-
-import matplotlib.pyplot as plt
-
-x = [1,2,3,4,5,6]
-y = [2,4,1,5,2,6]
-
-plt.plot(x, y, color='red', linestyle='dashed', linewidth = 5, marker='o', markerfacecolor='blue', markersize=14)
-
-plt.ylim(1,8)
-plt.xlim(1,8)
-
-plt.xlabel('x - axis')
-plt.ylabel('y - axis')
-
-plt.title('Line customization!')
-
-plt.show()
-```
-<img width="695" height="566" alt="560424341-d8a861c8-8ed2-4046-a225-9f3c460143ec" src="https://github.com/user-attachments/assets/bb8584c2-5d43-4491-85d9-5e7dcca56d05" />
-# Scatter Plot :
-```
+import pandas as pd
 import numpy as np
-x = np.arange(0,10)
-y = np.arange(11,21)
-x
-y
-```
-<img width="372" height="51" alt="560425570-268e77b7-849c-47a4-b15d-9e07037f0a30" src="https://github.com/user-attachments/assets/9512aeb1-f485-4937-b75b-30189d1e56e5" />
-<img width="479" height="56" alt="560425704-9d0e995a-996e-42e1-abdf-2e31ad0ebf8d" src="https://github.com/user-attachments/assets/c3a6dd78-5f5e-45b3-9085-04bda56acb69" />
-```
-y=x*x
-y
-```
-<img width="473" height="44" alt="560425899-81a0566f-6927-4213-a765-f527e91181dc" src="https://github.com/user-attachments/assets/7f9d2908-91ba-4c65-bbcd-7ea89dec9057" />
-```
-plt.plot(x, y, 'g*', linestyle='dashed', linewidth = 2, markersize = 14)
-plt.xlabel('x - axis')
-plt.ylabel('y - axis')
-plt.title('2d Diagram')
-```
-<img width="707" height="599" alt="560426057-7581d292-65b8-420b-82d5-825c22ff07dc" src="https://github.com/user-attachments/assets/73f8fd7c-8bc6-4bdd-b544-9de4bc4bfc29" />
-```
-np.pi
-```
-<img width="195" height="40" alt="560426430-77f8c7cd-c214-43c2-a044-77a3642bdbd4" src="https://github.com/user-attachments/assets/5cf57cba-a89e-4078-8e4e-aa4d6ab3919e" />
-```
-x = np.arange(0, 2*np.pi, 0.1)
-y = np.sin(x)
-plt.title("sine wave form")
-
-plt.plot(x,y, 'go', markersize=8, color="pink")
-plt.show()
-```
-<img width="725" height="596" alt="560426703-0e4ff3b8-c87f-4028-992f-27cf6b672e91" src="https://github.com/user-attachments/assets/4fba63dd-17e1-43d8-b8b0-4c8002d1b566" />
-# Area Chart :
-```
 import matplotlib.pyplot as plt
-import numpy as np
-x = [1,2,3,4,5]
-y1 = [10,12,14,16,18]
-y2 = [5,7,9,11,13]
-y3 = [2,4,6,8,10]
-plt.fill_between(x, y1, color='blue')
-plt.fill_between(x, y2, color='green')
-plt.plot(x, y1, color='red')
-plt.plot(x, y2, color='black')
-plt.legend(['y1','y2'])
+import seaborn as sns
+
+# Generate sample data
+np.random.seed(0)
+cities = ['Delhi', 'Bangalore', 'Mumbai', 'Chennai']
+data = pd.DataFrame({
+    'id': range(1, 21),
+    'City': np.random.choice(cities, size=20),
+    'Category': np.random.choice(['A', 'B', 'C'], size=20),
+    'Value': np.random.randint(10, 100, size=20),
+    'Score': np.random.randn(20) * 10 + 50,
+    'Target': np.random.choice([0, 1], size=20)
+})
+```
+# 1. Pie Chart: City distribution:
+```
+plt.figure(figsize=(5, 5))
+data['City'].value_counts().plot.pie(autopct='%1.1f%%', startangle=90)
+plt.title('City Distribution (Pie Chart)')
+plt.ylabel('')
 plt.show()
 ```
-<img width="697" height="517" alt="560427130-441946d7-12a6-41bd-b5bb-75784a8f36aa" src="https://github.com/user-attachments/assets/ad7cac9c-c69e-4f53-a489-0dc35d384f4e" />
-# Bar Chart :
+<img width="617" height="520" alt="500345850-8f0829d9-d722-4af6-aba1-eccab7fa198d" src="https://github.com/user-attachments/assets/fd0550b0-d595-49fb-a0c3-9aba04bc896e" />
 
-import matplotlib.pyplot as plt
-val=[5,6,3,7,2]
-n=["A", "B", "C", "D", "E"]
-plt.bar(n,val,color="green")
-plt.show()
-<img width="701" height="516" alt="324333423-c0033a63-164f-4cc4-996f-95201893ecd0" src="https://github.com/user-attachments/assets/f81e11bc-b915-4f9d-be5d-77da2480a872" />
+
+## 2. Bar Chart: Average Value per City:
 ```
-import matplotlib.pyplot as plt 
-val=[5,6,3,7,2] 
-n=["A", "B", "C", "D", "E"] 
-plt.barh(n,val,color="green")
+plt.figure(figsize=(6, 4))
+city_avg = data.groupby('City')['Value'].mean()
+city_avg.plot(kind='bar', color='skyblue')
+plt.title('Average Value per City (Bar Chart)')
+plt.xlabel('City')
+plt.ylabel('Average Value')
 plt.show()
 ```
-<img width="674" height="519" alt="560428278-d4ef3611-c357-4b02-beef-0f98f2057d0a" src="https://github.com/user-attachments/assets/bbba98c5-45a1-4dcc-adcb-314ac277b951" />
+<img width="707" height="552" alt="500345908-5a67c065-da77-4eb2-becb-a82b8598d1a5" src="https://github.com/user-attachments/assets/ca1bd310-5609-4145-b83c-98c814859564" />
+
+
+## 3. Line Graph: Value over id (mimicking time series) 
+```
+plt.figure(figsize=(6, 4))
+plt.plot(data['id'], data['Value'], marker='o', linestyle='-')
+plt.title('Value over id (Line Graph)')
+plt.xlabel('id')
+plt.ylabel('Value')
+plt.show()
+```
+<img width="751" height="483" alt="500345988-eab6ee9b-33fe-4ff3-a32f-4dc2f8ee885e" src="https://github.com/user-attachments/assets/b4042956-3cf7-4205-9854-671b45f1e523" />
 
 
 
+## 4. Scatter Plot: Value vs Score, colored by Target :
+```
+plt.figure(figsize=(6, 4))
+sns.scatterplot(data=data, x='Value', y='Score', hue='Target', palette='Set1')
+plt.title('Value vs Score (Scatter Plot)')
+plt.show()
+```
+<img width="697" height="488" alt="500346096-9117b8f3-3bbf-400e-a47f-07b6178cd586" src="https://github.com/user-attachments/assets/5730487f-5a21-423a-bcde-fe71d240d553" />
 
 
 
+## 5. Box Plot: Score distribution by City:
+```
+plt.figure(figsize=(6, 4))
+sns.boxplot(data=data, x='City', y='Score')
+plt.title('Score by City (Box Plot)')
+plt.show()
+```
+<img width="743" height="492" alt="500346181-dd653fb2-793b-4d70-a3c1-ae37ac2a9e71" src="https://github.com/user-attachments/assets/e74eb305-1164-4fa3-a9a7-0313783b200f" />
 
 
 
+##  6. Heatmap: Correlation between numeric columns :
+```
+plt.figure(figsize=(5, 4))
+sns.heatmap(data[['Value', 'Score', 'Target']].corr(), annot=True, cmap='coolwarm')
+plt.title('Correlation Heatmap')
+plt.show()
+```
+<img width="586" height="458" alt="500346276-4176498a-2e4d-4205-a28b-4e8abd7ff52b" src="https://github.com/user-attachments/assets/45d4e644-bbce-41f3-811e-29c6182a3aa8" />
+
+
+
+## 7. Map: Plotting city locations (simple scatter, not a real map)
+```
+city_coords = {
+    'Delhi': (28.6139, 77.2090),
+    'Bangalore': (12.9716, 77.5946),
+    'Mumbai': (19.0760, 72.8777),
+    'Chennai': (13.0827, 80.2707)
+}
+city_df = pd.DataFrame(city_coords).T.reset_index()
+city_df.columns = ['City', 'Latitude', 'Longitude']
+city_counts = data['City'].value_counts().reset_index()
+city_counts.columns = ['City', 'Count']
+city_map = pd.merge(city_df, city_counts, on='City')
+
+plt.figure(figsize=(7, 6))
+plt.scatter(city_map['Longitude'], city_map['Latitude'], s=city_map['Count']*50, color='coral', alpha=0.7)
+for _, row in city_map.iterrows():
+    plt.text(row['Longitude']+0.2, row['Latitude']+0.2, row['City'], fontsize=12)
+plt.title('City Locations (Bubble size = count)')
+plt.xlabel('Longitude')
+plt.ylabel('Latitude')
+plt.grid(True)
+plt.show()
+```
+<img width="747" height="610" alt="500346341-c07201f1-e7c7-4496-9038-a91c7c396634" src="https://github.com/user-attachments/assets/381476f6-2028-4e6f-908f-cdf4b7b019ca" />
 
 
 
